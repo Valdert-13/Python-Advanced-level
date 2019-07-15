@@ -1,5 +1,4 @@
 env
 .gitinore
 .vs
-notebook/.ipynb_checkpoints/Lesson-1-checkpoint.ipynb
-notebook/.ipynb_checkpoints/Lesson-2-checkpoint.ipynb
+notebook/.ipynb_checkpoints
