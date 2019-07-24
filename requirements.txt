@@ -1,4 +1,4 @@
 ipython
 jupyter
 chardet
-PyYAML
+pyyaml
