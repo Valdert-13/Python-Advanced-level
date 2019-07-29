@@ -1,4 +1,5 @@
 from protocol import make_response
+from messenger.controllers import send_message
 
 
 def get_echo(request):
