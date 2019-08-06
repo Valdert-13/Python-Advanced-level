@@ -1,4 +1,5 @@
-env
-.gitinore
+
 .vs
-notebook/.ipynb_checkpoints
+env
+Python-Advanced-level.pyproj
+Python-Advanced-level.sln
