@@ -1,9 +1,28 @@
+import zlib
 import json
 import yaml
 import socket
+import threading
 from datetime import datetime
 from argparse import ArgumentParser
 
+WRITE_MODE = 'write'
+
+READ_MODE = 'read'
+
+def read(sock, buffersize):
+    while True:
+        response = sock.recv(buffersize)
+        bytes_response = zlib.decompress(response)
+        print(bytes_response.decode())
+
+
+def make_request(action, data):
+    return {
+        'action': action,
+        'time': datetime.now().timestamp(),
+        'data': data,
+    }
 
 parser = ArgumentParser()
 
@@ -32,21 +51,20 @@ try:
     sock.connect((host, port))
     print('Clien was started')
 
-    action = input('Enter action: ')
-    data = input('Enter data: ')
+    read_thread = threading.Thread(
+        target=read, args=(sock, config.get('buffersize'))
+    )
+    read_thread.start()
 
-    request = {
-        'action': action,
-        'time': datetime.now().timestamp(),
-        'data': data,
-    }
+    while True:
+        action = input('Enter action: ')
+        data = input('Enter data: ')
 
-    str_request = json.dumps(request)
-
-    sock.send(str_request.encode())
-    print(f'Client send data { data }')
-
-    b_response = sock.recv(config.get('buffersize'))
-    print(f'Server send data { b_response.decode() }')
+        request = make_request(action, data)
+        str_request = json.dumps(request)
+        bytes_request = zlib.compress(str_request.encode())
+        
+        sock.send(bytes_request)
+        print(f'Client send data { data }')
 except KeyboardInterrupt:
     print('client shutdown.')
