@@ -1,4 +1,6 @@
 ipython
 jupyter
 chardet
-PyYAML
+pyyaml
+pytest
+pytest-cov
