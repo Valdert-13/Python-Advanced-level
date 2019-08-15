@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c85c70f0-b9d3-4bdf-8bf3-27fc5fb27d8f}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>client.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="requirements.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="client.py" />
+    <Compile Include="server\actions.py" />
+    <Compile Include="server\decorators.py" />
+    <Compile Include="server\echo\actions.py" />
+    <Compile Include="server\echo\controllers.py" />
+    <Compile Include="server\echo\models\entities.py" />
+    <Compile Include="server\echo\models\models.py" />
+    <Compile Include="server\echo\models\__init__.py" />
+    <Compile Include="server\echo\utils.py" />
+    <Compile Include="server\echo\__init__.py" />
+    <Compile Include="server\handlers.py" />
+    <Compile Include="server\messenger\actions.py" />
+    <Compile Include="server\messenger\controllers.py" />
+    <Compile Include="server\messenger\models.py" />
+    <Compile Include="server\messenger\__init__.py" />
+    <Compile Include="server\middlewares.py" />
+    <Compile Include="server\protocol.py" />
+    <Compile Include="server\settings.py" />
+    <Compile Include="server\tests\test_make_response.py" />
+    <Compile Include="server\tests\test_validate_request.py" />
+    <Compile Include="server\tests\__init__.py" />
+    <Compile Include="server\__main__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="server" />
+    <Folder Include="server\echo" />
+    <Folder Include="server\echo\models" />
+    <Folder Include="server\messenger" />
+    <Folder Include="server\tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.6</Version>
+      <Description>env (Python 3.6 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
+</Project>
